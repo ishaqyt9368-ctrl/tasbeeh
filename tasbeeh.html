@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasbeeh Counter</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      margin-top: 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #count {
+      font-size: 50px;
+      margin: 20px;
+      color: green;
+    }
+
+    img {
+      width: 150px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tasbeeh Counter</h2>
+
+  <div id="count">0</div>
+
+  <button onclick="increase()">Count</button>
+  <button onclick="reset()">Reset</button>
+
+  <br>
+
+  <img id="image" src="https://via.placeholder.com/150" alt="tasbeeh">
+
+  <!-- Simple click sound -->
+  <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
+  <script>
+    let count = 0;
+
+    function increase() {
+      count++;
+      document.getElementById("count").innerText = count;
+
+      // play sound
+      document.getElementById("clickSound").play();
+
+      // change image after counts
+      if (count < 10) {
+        document.getElementById("image").src = "https://via.placeholder.com/150/green";
+      } 
+      else if (count < 20) {
+        document.getElementById("image").src = "https://via.placeholder.com/150/blue";
+      } 
+      else {
+        document.getElementById("image").src = "https://via.placeholder.com/150/red";
+      }
+    }
+
+    function reset() {
+      count = 0;
+      document.getElementById("count").innerText = count;
+      document.getElementById("image").src = "https://via.placeholder.com/150";
+    }
+  </script>
+
+</body>
+</html>
